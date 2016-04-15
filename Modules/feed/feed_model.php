@@ -53,7 +53,13 @@ class Feed
             } else if ($e == (string)Engine::PHPFIWA) {
                     require "Modules/feed/engine/PHPFiwa.php";          // Fixed interval with averaging
                     $engines[$e] = new PHPFiwa($this->settings['phpfiwa']);
-            } else if ($e == (string)Engine::REDISBUFFER) {
+            } else if ($e == (string)Engine::PHPSUM) {
+                    require "Modules/feed/engine/PHPSum.php";          // Fixed interval with summing
+                    $engines[$e] = new PHPSum($this->settings['phpsum']);
+            } else if ($e == (string)Engine::PHPAVE) {
+                    require "Modules/feed/engine/PHPAve.php";          // Fixed interval with averaging
+                    $engines[$e] = new PHPAve($this->settings['phpave']);
+            }else if ($e == (string)Engine::REDISBUFFER) {
                     require "Modules/feed/engine/RedisBuffer.php";      // Redis buffer for low-write mode
                     $engines[$e] = new RedisBuffer($this->redis,$this->settings['redisbuffer'],$this);
             } else if ($e == (string)Engine::PHPTIMESERIES) {
@@ -114,6 +120,8 @@ class Feed
             $options = array();
             if ($engine==Engine::PHPFINA) $options['interval'] = (int) $options_in->interval;
             if ($engine==Engine::PHPFIWA) $options['interval'] = (int) $options_in->interval;
+            if ($engine==Engine::PHPSUM) $options['interval'] = (int) $options_in->interval;
+            if ($engine==Engine::PHPAVE) $options['interval'] = (int) $options_in->interval;
 
             $engineresult = false;
             if ($datatype==DataType::HISTOGRAM) {
@@ -727,6 +735,14 @@ class Feed
 
     public function phpfiwa_export($feedid,$start,$layer) {
         return $this->EngineClass(Engine::PHPFIWA)->export($feedid,$start,$layer);
+    }
+    
+    public function phpsum_export($feedid,$start,$layer) {
+        return $this->EngineClass(Engine::PHPSUM)->export($feedid,$start,$layer);
+    }
+
+    public function phpave_export($feedid,$start,$layer) {
+        return $this->EngineClass(Engine::PHPAVE)->export($feedid,$start,$layer);
     }
 
     public function phpfina_export($feedid,$start) {

@@ -265,7 +265,7 @@ var processlist_ui =
     $("#processlist-ui #feed-engine").change(function(){
       var engine = $(this).val();
       $("#feed-interval").hide();
-      if (engine==6 || engine==5 || engine==4 || engine==1) $("#feed-interval").show();
+      if (engine==6 || engine==5|| engine==99 || engine==100 || engine==4 || engine==1) $("#feed-interval").show();
       
       var processid = $("#process-select").val();
       var datatype = processlist_ui.processlist[processid][4]; // 1:REALTIME, 2:DAILY, 3:HISTOGRAM

@@ -121,6 +121,8 @@
                                         <option value=6>PHPFIWA Fixed Interval With Averaging</option>
                                         <option value=5>PHPFINA Fixed Interval No Averaging</option>
                                         <option value=2>PHPTIMESERIES Variable Interval No Averaging</option>
+                                        <option value=99>PHPSUM Fixed Interval With Summing</option>
+                                        <option value=100>PHPAVE Fixed Interval With averaging</option>
                                         <option value=0>MYSQL TimeSeries</option>
                                         <option value=8>MYSQL Memory (RAM data lost on power off)</option>
                                     </select>

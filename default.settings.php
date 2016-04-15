@@ -62,6 +62,12 @@
         ),
         'phptimeseries'=>array(
             'datadir' => '/var/lib/phptimeseries/'
+        ),
+        'phpsum'=>array(
+            'datadir' => '/var/lib/phpsum/'
+        ),
+        'phpave'=>array(
+            'datadir' => '/var/lib/phpave/'
         )
     );
 

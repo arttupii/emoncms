@@ -122,7 +122,11 @@ function feed_controller()
                         if ($route->action == "export") $result = $feed->phptimeseries_export($feedid,get('start'));
                     } elseif ($f['engine']==Engine::PHPFIWA) {
                         if ($route->action == "export") $result = $feed->phpfiwa_export($feedid,get('start'),get('layer'));
-                    } elseif ($f['engine']==Engine::PHPFINA) {
+                    } elseif ($f['engine']==Engine::PHPSUM) {
+                        if ($route->action == "export") $result = $feed->phpsum_export($feedid,get('start'),get('layer'));
+                   } elseif ($f['engine']==Engine::PHPAVE) {
+                        if ($route->action == "export") $result = $feed->phpave_export($feedid,get('start'),get('layer'));
+                    }elseif ($f['engine']==Engine::PHPFINA) {
                         if ($route->action == "export") $result = $feed->phpfina_export($feedid,get('start'));
                     }
                 }
